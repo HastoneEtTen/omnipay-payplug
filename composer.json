@@ -1,0 +1,40 @@
+{
+  "name": "hastoneetten/omnipay-payplug",
+  "type": "library",
+  "description": "Payplug driver for the Omnipay payment processing library",
+  "keywords": [
+    "gateway",
+    "merchant",
+    "omnipay",
+    "pay",
+    "payment",
+    "payplug"
+  ],
+  "homepage": "https://github.com/HastoneEtTen/omnipay-payplug",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Hastone et Ten",
+      "email": "web@hastone-et-ten.fr"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Omnipay\\Payplug\\": "src/"
+    }
+  },
+  "require": {
+    "payplug/payplug-php": "~3.0",
+    "omnipay/common": "~3.0",
+    "ext-simplexml": "*"
+  },
+  "require-dev": {
+    "omnipay/tests": "~3.0",
+    "squizlabs/php_codesniffer": "^3"
+  },
+  "scripts": {
+    "test": "phpunit",
+    "check-style": "phpcs -p --standard=PSR2 src/",
+    "fix-style": "phpcbf -p --standard=PSR2 src/"
+  }
+}
