@@ -23,7 +23,7 @@ class PurchaseRequest extends AbstractRequest
 
         /***/
         $data = [];
-        $data['amount'] = $this->getAmountInteger() * 100;
+        $data['amount'] = $this->getAmountInteger();
         $data['currency']  = $this->getCurrency();
 
         if ($this->card) {

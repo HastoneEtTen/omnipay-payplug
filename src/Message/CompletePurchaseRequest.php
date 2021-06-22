@@ -16,13 +16,10 @@ class CompletePurchaseRequest extends AbstractRequest
     {
         $input = $this->httpRequest->getContent();
 
-        try {
-            $resource = Notification::treat($input);
-            if ($resource instanceof Payment) {
-                return $resource;
-            }
-        } catch (\Payplug\Exception\PayplugException $exception) {
-            echo htmlentities($exception);
+        $this->getPayplug();
+        $resource = Notification::treat($input);
+        if ($resource instanceof Payment) {
+            return $resource;
         }
 
         return null;

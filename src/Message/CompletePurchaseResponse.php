@@ -27,7 +27,7 @@ class CompletePurchaseResponse extends AbstractResponse
 
     public function getAmount()
     {
-        return isset($this->data->amount) ? $this->data->amount/100 : null;
+        return isset($this->data->amount) ? $this->data->amount : null;
     }
 
     public function getTransactionDate()
