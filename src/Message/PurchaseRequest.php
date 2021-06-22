@@ -3,6 +3,7 @@
 namespace Omnipay\Payplug\Message;
 
 use Omnipay\Common\CreditCard;
+use Payplug\Payment;
 
 /**
  * Payplug Purchase Request
@@ -56,11 +57,12 @@ class PurchaseRequest extends AbstractRequest
         ];
 
         $data['notification_url'] = $this->getNotifyUrl();
+
         $data['metadata'] = [
-            'customer_id'    => $customer_id
+            'order_id'    => $this->getOrderId()
         ];
 
-        $payment = $payplug::init($data);
+        $payment = Payment::create($data);
 
         return [
             'url' => $payment->hosted_payment->payment_url

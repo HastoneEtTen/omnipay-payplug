@@ -11,44 +11,27 @@ class CompletePurchaseResponse extends AbstractResponse
 {
     public function isSuccessful()
     {
-        return true;
-        // return $this->getTransactionStatus() == 'AUTHORISED';
+        return $this->data->is_paid;
     }
 
-    /**
+
     public function getTransactionReference()
     {
-        return isset($this->data['vads_trans_id']) ? $this->data['vads_trans_id'] : null;
+        return $this->data->id ?? null;
     }
 
     public function getOrderId()
     {
-        return isset($this->data['vads_order_id']) ? $this->data['vads_order_id'] : null;
+        return $this->data->metadata['order_id'] ?? null;
     }
 
     public function getAmount()
     {
-        return isset($this->data['vads_amount']) ? $this->data['vads_amount'] / 100 : null;
+        return isset($this->data->amount) ? $this->data->amount/100 : null;
     }
 
     public function getTransactionDate()
     {
-        return isset($this->data['vads_trans_date']) ? $this->data['vads_trans_date'] : null;
+        return $this->data->paid_at ?? null;
     }
-
-    public function getTransactionStatus()
-    {
-        return isset($this->data['vads_trans_status']) ? $this->data['vads_trans_status'] : null;
-    }
-
-    public function getCode()
-    {
-        return isset($this->data['vads_result']) ? $this->data['vads_result'] : null;
-    }
-
-    public function getUuid()
-    {
-        return isset($this->data['vads_trans_uuid']) ? $this->data['vads_trans_uuid'] : null;
-    }
-     */
 }
